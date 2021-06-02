@@ -14,7 +14,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonials = Testimonial::all();
+        return view('backoffice.testimonial.all', compact('testimonials'));
     }
 
     /**
