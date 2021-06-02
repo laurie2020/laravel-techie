@@ -4,6 +4,7 @@ use App\Http\Controllers\ChiffreController;
 use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
+use App\Models\Chiffre;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $chiffres = Chiffre::all();
+    return view('welcome', compact("chiffres"));
 });
 
 // Admin

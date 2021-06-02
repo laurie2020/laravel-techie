@@ -15,10 +15,31 @@ class PersonneSeeder extends Seeder
     public function run()
     {
         DB::table('personnes')->insert([
-            'photo' => 'Insérez une photo',
-            'nom' => 'Guy De ',
-            'prenom' => 'Maupassant ',
-            'profession' => "Poète/Ecrivain"
+            'photo' => 'testimonials-1.jpg',
+            'nom' => 'Goodman',
+            'prenom' => 'Saul',
+            'profession' => "Ceo & Founder"
+        ]);
+
+        DB::table('personnes')->insert([
+            'photo' => 'testimonials-2.jpg',
+            'nom' => 'Wilsson',
+            'prenom' => 'Sara',
+            'profession' => "Designer"
+        ]);
+
+        DB::table('personnes')->insert([
+            'photo' => 'testimonials-3.jpg',
+            'nom' => 'Karlis',
+            'prenom' => 'Jena',
+            'profession' => "Store Owner"
+        ]);
+
+        DB::table('personnes')->insert([
+            'photo' => 'testimonials-4.jpg',
+            'nom' => 'Larson',
+            'prenom' => 'John',
+            'profession' => "Entrepreneur"
         ]);
     }
 }
