@@ -14,7 +14,8 @@ class PersonneController extends Controller
      */
     public function index()
     {
-        //
+        $personnes = Personne::all();
+        return view('backoffice.personne.all', compact('personnes'));
     }
 
     /**
