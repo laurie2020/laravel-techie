@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Admin
+Route::get('/panel', function () {
+    return view('backoffice.panel');
+})->name('admin');
 // Chiffre
 Route::resource('/chiffre', ChiffreController::class);
 
