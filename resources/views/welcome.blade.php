@@ -1,44 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Techie Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset("css/aos.css") }}" rel="stylesheet">
-    <link href="{{ asset("css/bootstrap/bootstrap.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("css/bootstrap-icons/bootstrap-icons.css") }}" rel="stylesheet">
-    <link href="{{ asset("css/boxicons/css/boxicons.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("css/glightbox.min.css") }}" rel="stylesheet">
-    <link href="{{ asset("css/swiper-bundle.min.css") }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset("css/style.css") }}" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Techie - v4.1.0
-  * Template URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
-
-<body>
-
+@section('content')
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top ">
         <div class="container d-flex align-items-center justify-content-between">
@@ -65,14 +27,13 @@
 
         <div class="container-fluid" data-aos="fade-up">
             <div class="row justify-content-center">
-                <div
-                    class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1>Bettter Digital Experience With Techie</h1>
                     <h2>We are team of talented designers making websites with Bootstrap</h2>
                     <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
                 </div>
                 <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
-                    <img src="{{ asset("img/hero-img.png") }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('img/hero-img.png') }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -87,7 +48,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="150">
-                        <img src="{{ asset("img/about.jpg") }}" class="img-fluid" alt="">
+                        <img src="{{ asset('img/about.jpg') }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
                         <h3>Voluptatem dignissimos provident quasi corporis</h3>
@@ -277,7 +238,8 @@
                                     risus at semper.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="{{ asset("img/testimonials/testimonials-1.jpg ") }}" class="testimonial-img" alt="">
+                                <img src="{{ asset('img/testimonials/testimonials-1.jpg ') }}" class="testimonial-img"
+                                    alt="">
                                 <h3>Saul Goodman</h3>
                                 <h4>Ceo &amp; Founder</h4>
                             </div>
@@ -292,7 +254,8 @@
                                     legam anim culpa.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="{{ asset("img/testimonials/testimonials-2.jpg ") }}" class="testimonial-img" alt="">
+                                <img src="{{ asset('img/testimonials/testimonials-2.jpg ') }}" class="testimonial-img"
+                                    alt="">
                                 <h3>Sara Wilsson</h3>
                                 <h4>Designer</h4>
                             </div>
@@ -307,7 +270,8 @@
                                     minim.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="{{ asset("img/testimonials/testimonials-3.jpg ") }}" class="testimonial-img" alt="">
+                                <img src="{{ asset('img/testimonials/testimonials-3.jpg ') }}" class="testimonial-img"
+                                    alt="">
                                 <h3>Jena Karlis</h3>
                                 <h4>Store Owner</h4>
                             </div>
@@ -322,7 +286,8 @@
                                     dolore labore.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="{{ asset("img/testimonials/testimonials-4.jpg") }}" class="testimonial-img" alt="">
+                                <img src="{{ asset('img/testimonials/testimonials-4.jpg') }}" class="testimonial-img"
+                                    alt="">
                                 <h3>Matt Brandon</h3>
                                 <h4>Freelancer</h4>
                             </div>
@@ -337,7 +302,8 @@
                                     culpa.
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
-                                <img src="{{ asset("img/testimonials/testimonials-5.jpg ") }}" class="testimonial-img" alt="">
+                                <img src="{{ asset('img/testimonials/testimonials-5.jpg ') }}" class="testimonial-img"
+                                    alt="">
                                 <h3>John Larson</h3>
                                 <h4>Entrepreneur</h4>
                             </div>
@@ -400,8 +366,8 @@
                         <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                        required>
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
                                     <input type="email" class="form-control" name="email" id="email"
@@ -409,8 +375,8 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required>
+                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                                    required>
                             </div>
                             <div class="form-group mt-3">
                                 <textarea class="form-control" name="message" rows="5" placeholder="Message"
@@ -514,19 +480,8 @@
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
     {{-- <div id="preloader"></div> --}}
+@endsection
 
-     <!-- Vendor JS Files --> 
-    <script src="{{ asset("js/aos.js") }}"></script>
-    <script src="{{ asset("js/bootstrap.bundle.min.js") }}"></script>
-    <script src="{{ asset("js/glightbox.min.js") }}"></script>
-    <script src="{{ asset("js/isotope.pkgd.min.js") }}"></script>
-    <script src="{{ asset("js/validate.js") }}"></script>
-    <script src="{{ asset("js/purecounter.js") }}"></script>
-    <script src="{{ asset("js/swiper-bundle.min.js") }}"></script>
 
-    <!-- Template Main JS File -->
-    <script src="{{ asset("js/main.js") }}"></script> --}}
 
-</body>
 
-</html>
