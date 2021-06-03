@@ -25,7 +25,7 @@ class ChiffreController extends Controller
      */
     public function create()
     {
-        
+        return view("backoffice.chiffre.create");
     }
 
     /**
@@ -36,7 +36,19 @@ class ChiffreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nombre" => "required",
+            "titre" => "required"
+        ]);
+
+        $chiffre = new Chiffre();
+
+        $chiffre->nombre = $request->nombre;
+        $chiffre->titre = $request->titre;
+
+        $chiffre->save();
+
+        return redirect()->route('chiffre.index')->with("message", "Vous avez créé un nouveau chiffre avec succès!");
     }
 
     /**
@@ -47,7 +59,7 @@ class ChiffreController extends Controller
      */
     public function show(Chiffre $chiffre)
     {
-        //
+        return view('backoffice.chiffre.show', compact('chiffre'));
     }
 
     /**
@@ -58,7 +70,7 @@ class ChiffreController extends Controller
      */
     public function edit(Chiffre $chiffre)
     {
-        //
+        return view("backoffice.chiffre.show", compact('chiffre'));
     }
 
     /**
@@ -70,7 +82,16 @@ class ChiffreController extends Controller
      */
     public function update(Request $request, Chiffre $chiffre)
     {
-        //
+        $request->validate([
+            "nombre" => "required",
+            "titre" => "required"
+        ]);
+        $chiffre->nombre = $request->nombre;
+        $chiffre->titre = $request->titre;
+
+        $chiffre->save();
+
+        return redirect()->route("chiffre.index")->with("message", "Vous avez modifié votre chiffre avec succès!");
     }
 
     /**
