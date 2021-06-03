@@ -25,7 +25,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view("backoffice.service.create");
     }
 
     /**
@@ -36,7 +36,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -47,7 +47,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view("backoffice.service.show");
     }
 
     /**
@@ -81,6 +81,6 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
     }
 }

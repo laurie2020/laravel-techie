@@ -25,7 +25,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view("backoffice.testimonial.create");
     }
 
     /**
@@ -36,7 +36,13 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $testimonial = new Testimonial();
+
+        $testimonial->texte = $request->texte;
+        $testimonial->personne_id = $request->personne_id;
+
+        $testimonial->save();
+        return redirect()->route("testimonial.index");
     }
 
     /**
