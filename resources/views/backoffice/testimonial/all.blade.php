@@ -19,7 +19,7 @@
             @foreach ($testimonials as $testimonial)
                 <tr>
                     <th scope="row">{{ $testimonial->id }}</th>
-                    <td class="">{{ $testimonial->texte }}</td>
+                    <td>{{ $testimonial->texte }}</td>
                     <td>{{ $testimonial->personne->nom }}</td>
                     <td>{{ $testimonial->description }}</td>
 
