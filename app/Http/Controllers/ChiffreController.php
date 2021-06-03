@@ -25,7 +25,7 @@ class ChiffreController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -81,6 +81,7 @@ class ChiffreController extends Controller
      */
     public function destroy(Chiffre $chiffre)
     {
-        //
+        $chiffre->delete();
+        return redirect()->back()->with('message', "Vous avez supprimé le chiffre avec l'id $chiffre->id");
     }
 }
