@@ -37,6 +37,13 @@ class PersonneSeeder extends Seeder
 
         DB::table('personnes')->insert([
             'photo' => 'testimonials-4.jpg',
+            'nom' => 'Brandon',
+            'prenom' => 'Matt',
+            'profession' => "Freelancer"
+        ]);
+
+        DB::table('personnes')->insert([
+            'photo' => 'testimonials-5.jpg',
             'nom' => 'Larson',
             'prenom' => 'John',
             'profession' => "Entrepreneur"

@@ -5,6 +5,8 @@ use App\Http\Controllers\PersonneController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use App\Models\Chiffre;
+use App\Models\Service;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $chiffres = Chiffre::all();
-    return view('welcome', compact("chiffres"));
+    $services = Service::all();
+    $testimonials = Testimonial::all();
+    return view('welcome', compact("chiffres", "services", "testimonials"));
 });
 
 // Admin
