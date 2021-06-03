@@ -26,7 +26,6 @@ class PersonneController extends Controller
      */
     public function create()
     {
-        return view("bakcoffice.personne.create");
     }
 
     /**
@@ -37,17 +36,7 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        $personne = new Personne;
-
-        $personne->nom = $request->nom;
-        $personne->prenom = $request->prenom;
-        $personne->photo = $request->file("photo")->hashName();
-        $personne->profession = $request->profession;
-
-        $personne->save();
-        $request->file("photo")->storePublicly("img", "public");
-
-        return redirect()->route("personne.index");
+        
     }
 
     /**
@@ -104,4 +93,6 @@ class PersonneController extends Controller
         Storage::disk("public")->delete("img/" . $personne->photo);
         $personne->delete();
     }
+
+    
 }

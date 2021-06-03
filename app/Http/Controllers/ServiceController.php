@@ -36,7 +36,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $service = new Service();
+
+        $service->icone1 = "icon-box iconbox-blue";
+        $service->icone2 = $request->icone2;
+        $service->titre = $request->titre;
+        $service->description = $request->description;
         
+        $service->save();
+
+        return redirect()->rout("service.index");
     }
 
     /**
@@ -47,7 +56,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        return view("backoffice.service.show");
+        return view("backoffice.service.show", compact("service"));
     }
 
     /**
@@ -58,7 +67,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view("backoffice.service.edit", compact("service"));
     }
 
     /**
@@ -70,7 +79,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->icone1 = $request->icone1;
+        $service->icone2 = $request->icone2;
+        $service->titre = $request->titre;
+        $service->description = $service->description;
+        
+        $service->save();
+        return redirect()->route("")
     }
 
     /**
@@ -82,5 +97,6 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
+        return redirect()->back();
     }
 }
