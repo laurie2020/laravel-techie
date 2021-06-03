@@ -85,7 +85,7 @@ class ServiceController extends Controller
         $service->description = $service->description;
         
         $service->save();
-        return redirect()->route("")
+        return redirect()->route("service.index");
     }
 
     /**

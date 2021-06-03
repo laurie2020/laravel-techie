@@ -25,7 +25,8 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        
+        return view("backoffice.service.create");
+
     }
 
     /**
@@ -36,7 +37,15 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $testimonial = new Testimonial();
+
+        $testimonial->texte = $request->texte;
+        $testimonial->personne_id = $request->personne_id;
+
+        $testimonial->save();
+
+        return redirect()->route("testimonial.index");
+
     }
 
     /**
@@ -58,7 +67,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view("backoffice.testimonial.edit", compact("testimonial"));
     }
 
     /**
@@ -70,7 +79,12 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $testimonial->texte = $request->texte;
+        $testimonial->personne_id = $request->personne_id;
+
+        $testimonial->save();
+
+        return redirect()->route("testimonial.index", compact("testimonial"));
     }
 
     /**
