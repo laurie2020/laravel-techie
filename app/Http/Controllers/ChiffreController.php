@@ -25,7 +25,7 @@ class ChiffreController extends Controller
      */
     public function create()
     {
-        
+        return view('backoffice.chiffre.create');
     }
 
     /**
