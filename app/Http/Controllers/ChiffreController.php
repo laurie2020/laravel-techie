@@ -70,7 +70,7 @@ class ChiffreController extends Controller
      */
     public function edit(Chiffre $chiffre)
     {
-        return view("backoffice.chiffre.show", compact('chiffre'));
+        return view("backoffice.chiffre.edit", compact('chiffre'));
     }
 
     /**

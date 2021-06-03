@@ -15,15 +15,16 @@
             </div>
         @endif
 
-        <form action="/chiffre/{{ $chiffres->id }}" method="post">
+        <form action="/chiffre/{{ $chiffre->id }}" method="POST">
             @csrf
+            @method('put')
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <input type="number" class="form-control" name="nombre" value="{{ $chiffres->nombre }}">
+                <input type="number" class="form-control" name="nombre" value="{{ $chiffre->nombre }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Titre</label>
-                <input type="text" class="form-control" name="titre" value="{{ $chiffres->titre }}">
+                <input type="text" class="form-control" name="titre" value="{{ $chiffre->titre }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
