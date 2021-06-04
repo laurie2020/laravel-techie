@@ -1,26 +1,20 @@
-@extends('layouts.app1')
+<x-app-layout>
+    <x-slot name="header">
+        
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Chiffres') }}
+        </h2>
+        
+    </x-slot>
 
-@section('content')
-    @include('partials.nav')
-    <table class="table container ">
-        <div class="w-100 d-flex justify-content-center align-items-center flex-column mt-5 pt-5">
-            <h1></h1>
-        </div>
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">{{ $chiffre->id }}</th>
-                <td>{{ $chiffre->nombre }}</td>
-                <td>{{ $chiffre->titre }}</td>
-                <td><a href="/chiffre" class="btn btn-danger">Retour</a></td>
-            </tr>
-        </tbody>
-    </table>
-@endsection
+    
+
+    <p class="text-3xl underline"><a href="/chiffre">< Back</a></p>
+    <section class="mt-24">
+        <h1 class="text-5xl text-center mb-24">{{ $chiffre->titre }}</h1>
+        <h2 class="text-9xl text-center text-indigo-600">{{ $chiffre->nombre }}</h2>
+    </section>
+    
+    
+</x-app-layout>
+

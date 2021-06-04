@@ -16,10 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('chiffre.index')" :active="request()->routeIs('chiffre.index')">
                         {{ __('Chiffres') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('personne.index')" :active="request()->routeIs('personne.index')">
+                        {{ __('Personnes') }}
                     </x-nav-link>
                 </div>
             </div>

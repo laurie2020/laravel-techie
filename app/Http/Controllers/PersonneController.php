@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personne;
+use Faker\Provider\ar_JO\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,6 +27,7 @@ class PersonneController extends Controller
      */
     public function create()
     {
+        return view("backoffice.personne.create");
     }
 
     /**
@@ -36,7 +38,17 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $personne = new Personne();
+
+        $personne->nom = $request->nom;
+        $personne->prenom = $request->prenom;
+        $personne->photo = $request->file("photo")->hashName();
+        $personne->profession = $request->profession;
+
+        $personne->save();
+        $request->file("photo")->storePublicly('img/testimonials', "public");
+
+        return redirect()->route('personne.index');
     }
 
     /**
@@ -70,14 +82,14 @@ class PersonneController extends Controller
      */
     public function update(Request $request, Personne $personne)
     {
-        Storage::disk("public")->delete("img/" . $personne->photo);
+        Storage::disk("public")->delete("img/testimonials" . $personne->photo);
         $personne->nom = $request->nom;
         $personne->prenom = $request->prenom;
         $personne->photo = $request->file("photo")->hashName();
         $personne->profession = $request->profession;
 
         $personne->save();
-        $request->file("photo")->storePublicly("img", "public");
+        $request->file("photo")->storePublicly("img/testimonials", "public");
 
         return redirect()->route("personne.index");
     }
@@ -90,7 +102,7 @@ class PersonneController extends Controller
      */
     public function destroy(Personne $personne)
     {
-        Storage::disk("public")->delete("img/" . $personne->photo);
+        Storage::disk("public")->delete("img/testimonials" . $personne->photo);
         $personne->delete();
     }
 
