@@ -36,7 +36,6 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -94,5 +93,10 @@ class PersonneController extends Controller
         $personne->delete();
     }
 
-    
+    public function download($id)
+    {
+        $personne = Personne::find($id);
+
+        return Storage::disk('public')->download('img/' . $personne->photo);
+    }
 }

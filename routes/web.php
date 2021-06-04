@@ -31,7 +31,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
@@ -39,3 +39,5 @@ Route::resource("/chiffre", ChiffreController::class);
 Route::resource("/service", ServiceController::class);
 Route::resource("/testimonial", TestimonialController::class);
 Route::resource("/personne", PersonneController::class);
+
+Route::post("personne/{id}/download", [PersonneController::class, 'download']);
