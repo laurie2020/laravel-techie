@@ -38,6 +38,12 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "nom" => "required",
+            "prenom" => "required",
+            "photo" => "required",
+            "profession" => "required"
+        ]);
         $personne = new Personne();
 
         $personne->nom = $request->nom;
@@ -48,7 +54,7 @@ class PersonneController extends Controller
         $personne->save();
         $request->file("photo")->storePublicly('img/testimonials', "public");
 
-        return redirect()->route('personne.index');
+        return redirect()->route('personne.index')->with("message", "Vous avez crée une nouvelle personne avec succès!");
     }
 
     /**
@@ -82,6 +88,12 @@ class PersonneController extends Controller
      */
     public function update(Request $request, Personne $personne)
     {
+        $request->validate([
+            "nom" => "required",
+            "prenom" => "required",
+            "photo" => "required",
+            "profession" => "required"
+        ]);
         Storage::disk("public")->delete("img/testimonials" . $personne->photo);
         $personne->nom = $request->nom;
         $personne->prenom = $request->prenom;
@@ -91,7 +103,7 @@ class PersonneController extends Controller
         $personne->save();
         $request->file("photo")->storePublicly("img/testimonials", "public");
 
-        return redirect()->route("personne.index");
+        return redirect()->route("personne.index")->with("message", "Vous avez modifié une personne avec succès!");
     }
 
     /**
@@ -110,6 +122,6 @@ class PersonneController extends Controller
     {
         $personne = Personne::find($id);
 
-        return Storage::disk('public')->download('img/' . $personne->photo);
+        return Storage::disk('public')->download('img/testimonials/' . $personne->photo);
     }
 }

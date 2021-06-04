@@ -18,7 +18,7 @@ class HomeSeeder extends Seeder
             'titre' =>  'Bettter Digital Experience With Techie',
             'description' => 'We are team of talented designers making websites with Bootstrap
             ',
-            'image' =>  'home.jpg'
+            'image' =>  'hero-img.png'
         ]);
     }
 }

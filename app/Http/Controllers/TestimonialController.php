@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personne;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view("backoffice.service.create");
+        return view("backoffice.testimonial.create");
 
     }
 
@@ -37,14 +38,31 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "nom" => "required",
+            "prenom" => "required",
+            "photo" => "required",
+            "profession" => "required",
+            "texte" => "required",
+        ]);
+        $personne = new Personne();
+
+        $personne->nom = $request->nom;
+        $personne->prenom = $request->prenom;
+        $personne->photo = $request->file("photo")->hashName();
+        $personne->profession = $request->profession;
+
+        $personne->save();
+        $request->file("photo")->storePublicly('img/testimonials', "public");
+
         $testimonial = new Testimonial();
 
         $testimonial->texte = $request->texte;
-        $testimonial->personne_id = $request->personne_id;
+        $testimonial->personne_id = $personne->id;
 
         $testimonial->save();
 
-        return redirect()->route("testimonial.index");
+        return redirect()->route("testimonial.index")->with("message", "Vous avez crée un nouveau testimonial et une nouvelle personne avec succès!");
 
     }
 
@@ -79,12 +97,15 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
+        $request->validate([
+            "texte" => "required",
+        ]);
         $testimonial->texte = $request->texte;
-        $testimonial->personne_id = $request->personne_id;
+        $testimonial->personne_id = $testimonial->personne_id;
 
         $testimonial->save();
 
-        return redirect()->route("testimonial.index", compact("testimonial"));
+        return redirect()->route("testimonial.index")->with("message", "Vous avez crée modifié un testimonial avec succès!");
     }
 
     /**

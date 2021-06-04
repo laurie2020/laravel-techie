@@ -9,6 +9,9 @@
     </x-slot>
 
     <div class="">
+        @if (session('message'))
+            <div class="w-11/12 mx-auto bg-green-200 rounded">{{ session('message') }}</div>
+        @endif
         <table class="table-auto w-3/4 mx-auto">
 
             <thead class="border-b-2 border-solid border-black">

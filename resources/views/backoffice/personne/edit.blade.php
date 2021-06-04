@@ -10,6 +10,11 @@
     
     <section class="container w-25 mt-10">
         <h1 class='text-5xl text-center'>Edit Personne</h1>
+        <ul class="bg-red-400 rounded w-11/12 mx-auto">
+            @foreach ($errors->all() as $message)
+                <li>{{ $message }}</li>
+            @endforeach
+        </ul>
         @if ($errors->any())
             <div class="w-3/4 bg-red-500">
                 <ul>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -70,7 +71,20 @@ class HomeController extends Controller
      */
     public function update(Request $request, Home $home)
     {
-        //
+        $request->validate([
+            "titre" => "required",
+            "description" => "required",
+            "image" => "required"
+        ]);
+        Storage::disk("public")->delete("img/" . $home->image);
+        $home->titre = $request->titre;
+        $home->description = $request->description;
+        $home->image = $request->file("image")->hashName();
+
+        $home->save();
+        $request->file("image")->storePublicly('img', "public");
+
+        return redirect()->route("home.index")->with("message", "Vous avez modifié home avec succès!");
     }
 
     /**
@@ -82,5 +96,12 @@ class HomeController extends Controller
     public function destroy(Home $home)
     {
         //
+    }
+
+    public function download($id)
+    {
+        $home = Home::find($id);
+
+        return Storage::disk('public')->download('img/' . $home->image);
     }
 }

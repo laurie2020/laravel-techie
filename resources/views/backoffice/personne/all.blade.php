@@ -9,6 +9,9 @@
     </x-slot>
 
     <div class="">
+        @if (session('message'))
+            <div class="w-11/12 mx-auto bg-green-200 rounded">{{ session('message') }}</div>
+        @endif
         <table class="table-auto w-3/4 mx-auto">
 
             <thead class="border-b-2 border-solid border-black">
@@ -25,7 +28,7 @@
                 @foreach ($personnes as $personne)
                     <tr class="border-b-2 border-solid">
                         <th scope="row" class="text-center p-3">{{ $personne->id }}</th>
-                        <td class="text-center p-3"> <img src="{{ asset("img/testimonials/" . $personne->photo) }}" alt="" width="100"></td>
+                        <td class="text-center p-3"> <a href="/personne/{{ $personne->id }}/download"><img src="{{ asset("img/testimonials/" . $personne->photo) }}" alt="" width="100"></a> </td>
                         <td class="text-center p-3">{{ $personne->nom }}</td>
                         <td class="text-center p-3">{{ $personne->prenom }}</td>
                         <td class="text-center p-3">{{ $personne->profession }}</td>

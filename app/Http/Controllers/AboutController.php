@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -58,7 +59,7 @@ class AboutController extends Controller
      */
     public function edit(About $about)
     {
-        return view('backoffice.about.edit', compact('about'))
+        return view('backoffice.about.edit', compact('about'));
     }
 
     /**
@@ -70,7 +71,26 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
-        //
+        $request->validate([
+            "titre" => "required",
+            "description" => "required",
+            "paragraphe1" => "required",
+            "paragraphe2" => "required",
+            "paragraphe3" => "required",
+            "image" => "required"
+        ]);
+        Storage::disk("public")->delete("img/" . $about->image);
+        $about->titre = $request->titre;
+        $about->description = $request->description;
+        $about->paragraphe1 = $request->paragraphe1;
+        $about->paragraphe2 = $request->paragraphe2;
+        $about->paragraphe3 = $request->paragraphe3;
+        $about->image = $request->file("image")->hashName();
+
+        $about->save();
+        $request->file("image")->storePublicly("img", "public");
+
+        return redirect()->route("about.index")->with("message", "Vous avez modifié une personne avec succès!");
     }
 
     /**
@@ -82,5 +102,12 @@ class AboutController extends Controller
     public function destroy(About $about)
     {
         //
+    }
+
+    public function download($id)
+    {
+        $about = About::find($id);
+
+        return Storage::disk('public')->download('img/' . $about->image);
     }
 }

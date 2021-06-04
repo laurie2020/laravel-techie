@@ -9,6 +9,9 @@
     </x-slot>
 
     <div class="">
+        @if (session('message'))
+            <div class="w-11/12 mx-auto bg-green-200 rounded">{{ session('message') }}</div>
+        @endif
         <table class="table-auto w-3/4 mx-auto">
 
             <thead class="border-b-2 border-solid border-black">
@@ -24,7 +27,7 @@
                 @foreach ($services as $service)
                     <tr class="border-b-2 border-solid">
                         <th scope="row" class="text-center p-3">{{ $service->id }}</th>
-                        <td class="text-center p-3"><i class="{{ $service->icone2 }}"></i></td>
+                        <td class="text-center p-3"><i class="{{ $service->icone2 }} text-2xl"></i></td>
                         <td class="text-center p-3">{{ $service->titre }}</td>
                         <td class="text-center p-3">{{ $service->description }}</td>
                         <td class="text-center p-3">

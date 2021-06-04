@@ -36,6 +36,11 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "icone2" => "required",
+            "titre" => "required",
+            "description" => "required",
+        ]);
         $service = new Service();
 
         $service->icone1 = "icon-box iconbox-blue";
@@ -45,7 +50,7 @@ class ServiceController extends Controller
         
         $service->save();
 
-        return redirect()->rout("service.index");
+        return redirect()->rout("service.index")->with("message", "Vous avez crée un nouveau service avec succès!");
     }
 
     /**
@@ -79,13 +84,18 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
+        $request->validate([
+            "icone2" => "required",
+            "titre" => "required",
+            "description" => "required",
+        ]);
         $service->icone1 = $request->icone1;
         $service->icone2 = $request->icone2;
         $service->titre = $request->titre;
         $service->description = $service->description;
         
         $service->save();
-        return redirect()->route("service.index");
+        return redirect()->route("service.index")->with("message", "Vous avez modifié un service avec succès!");
     }
 
     /**

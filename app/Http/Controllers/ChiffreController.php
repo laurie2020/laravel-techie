@@ -36,6 +36,10 @@ class ChiffreController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "nombre" => "required",
+            "titre" => "required"
+        ]);
         $chiffre = new Chiffre();
 
         $chiffre->nombre = $request->nombre;
@@ -43,7 +47,7 @@ class ChiffreController extends Controller
 
         $chiffre->save();
 
-        return redirect()->route("chiffre.index");
+        return redirect()->route("chiffre.index")->with("message", "Vous avez crée un nouveau chiffre avec succès!");
     }
 
     /**
