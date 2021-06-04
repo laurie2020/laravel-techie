@@ -1,42 +1,45 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Chiffres') }}
+        </h2>
+        
+    </x-slot>
 
-@section('content')
-    @include('partials.nav')
-    <table class="table container ">
-        <div class="w-100 d-flex justify-content-center align-items-center flex-column mt-5 pt-5">
-            <h1>Chiffre</h1>
-            <a class="btn btn-success" href="{{ route('chiffre.create') }}">Create</a>
-        </div>
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Titre</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($chiffres as $chiffre)
+    <div class="">
+        <table class="table-auto w-3/4 mx-auto">
+
+            <thead class="border-b-2 border-solid border-black">
                 <tr>
-                    <th scope="row">{{ $chiffre->id }}</th>
-                    <td>{{ $chiffre->nombre }}</td>
-                    <td>{{ $chiffre->titre }}</td>
-                    <td class="d-flex">
-                        <a class="btn btn-warning" href="/chiffre/{{ $chiffre->id }}/edit">Edit</a>
-                        <form action="/chiffre/{{ $chiffre->id }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger ms-2">Delete</button>
-                        </form>
-                        <form action="" method="post">
-
-                        </form>
-                        <a href="/chiffre/{{ $chiffre->id }}" class="btn btn-primary ms-2">
-                            Show
-                        </a>
-                    </td>
+                    <th scope="col" class="p-5">Id</th>
+                    <th scope="col" class="p-5">Nombre</th>
+                    <th scope="col" class="p-5">Titre</th>
+                    <th scope="col" class="p-5">Actions</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endsection
+            </thead>
+            <tbody>
+                @foreach ($chiffres as $chiffre)
+                    <tr class="border-b-2 border-solid">
+                        <th scope="row" class="text-center p-3">{{ $chiffre->id }}</th>
+                        <td class="text-center p-3">{{ $chiffre->nombre }}</td>
+                        <td class="text-center p-3">{{ $chiffre->titre }}</td>
+                        <td class="flex justify-center p-3">
+                            <a class="bg-yellow-500 px-3 py-2 rounded m-1" href="/chiffre/{{ $chiffre->id }}/edit">Edit</a>
+                            <form action="/chiffre/{{ $chiffre->id }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="bg-red-600 px-3 py-2 rounded m-1">Delete</button>
+                            </form>
+                            <form action="" method="post">
+            
+                            </form>
+                            <a href="/chiffre/{{ $chiffre->id }}" class="bg-blue-600 px-3 py-2 rounded m-1">
+                                Show
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</x-app-layout>

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
-    @include('partials.nav')
+    @include('layouts.navigation')
 
 @endsection

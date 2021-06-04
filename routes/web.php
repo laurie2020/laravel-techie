@@ -27,18 +27,15 @@ Route::get('/', function () {
     return view('welcome', compact("chiffres", "services", "testimonials"));
 });
 
-// Admin
-Route::get('/panel', function () {
-    return view('backoffice.panel');
-})->name('admin');
-// Chiffre
-Route::resource('/chiffre', ChiffreController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-// Personne
-Route::resource('/personne', PersonneController::class);
+require __DIR__.'/auth.php';
 
-// Testimonial
-Route::resource('/testimonial', TestimonialController::class);
 
-// Service
-Route::resource('/service', ServiceController::class);
+
+Route::resource("/chiffre", ChiffreController::class);
+Route::resource("/service", ServiceController::class);
+Route::resource("/testimonial", TestimonialController::class);
+Route::resource("/personne", PersonneController::class);
