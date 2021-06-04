@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             ChiffreSeeder::class,
             PersonneSeeder::class,
             ServiceSeeder::class,
-            TestimonialSeeder::class
+            TestimonialSeeder::class,
+            AboutSeeder::class,
+            HomeSeeder::class
         ]);
     }
 }
